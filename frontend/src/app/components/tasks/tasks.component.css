@@ -1,0 +1,49 @@
+/* Task Controls */
+.task-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.task-controls button {
+    font: inherit;
+    cursor: pointer;
+    background-color: #9965dd;
+    color: #f3f0ff;
+    border-radius: 4px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.task-controls button:hover,
+.task-controls button:active {
+    background-color: #a565dd;
+}
+
+/* Task List */
+#tasks {
+    /*padding: 1rem;*/
+}
+
+#tasks h2 {
+    text-align: center;
+    color: #d1c3e6;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+#tasks ul {
+    list-style: none;
+    padding: 0;
+}
+
+#tasks li {
+    margin-bottom: 1rem;
+}
+
+div {
+    /*margin-right: 30%;*/
+}

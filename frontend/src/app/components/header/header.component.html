@@ -1,0 +1,14 @@
+<header>
+    <img src="task-management-logo.png" alt="EasyTask Logo"/>
+    <h1>EasyTask</h1>
+    <p>An easy-to-use manager for your day-to-day tasks</p>
+    @if (loggedInUser()) {
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li><a routerLink="/tasks/add-task">Add Task</a></li>
+                <li><a routerLink="/login" (click)="onLogout()">Logout</a></li>
+            </ul>
+        </nav>
+    }
+</header>

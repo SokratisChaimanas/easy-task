@@ -1,0 +1,14 @@
+<div>
+    <article>
+        <h2>{{ task.title }}</h2>
+        <time>{{ task.dueDate | date: 'fullDate' }}</time>
+        <p>{{ task.description }}</p>
+        <p class="actions">
+            @if (task.status === 'ACTIVE') {
+                <button (click)="onTaskCompleted()">Complete</button>
+            } @else {
+            <span class="completed">COMPLETED</span>
+            }
+        </p>
+    </article>
+</div>

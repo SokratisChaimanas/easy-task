@@ -1,0 +1,57 @@
+<div class="signup-card">
+    <h2>Sign Up</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="signup-form">
+        <div>
+            <label for="username">Username</label>
+            @if (form.get('username')?.touched) {
+                @if (form.get('username')?.hasError('required')) {
+                    <app-error [errorMessage]="errorMessages.username.required"/>
+                } @else if (form.get('username')?.hasError('usernameExists')) {
+                    <app-error [errorMessage]="errorMessages.username.inUse"/>
+                } @else if (form.get('username')?.hasError('minlength') || form.get('username')?.hasError('maxlength')) {
+                    <app-error [errorMessage]="errorMessages.username.invalid"/>
+                }
+            }
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter your username"
+                formControlName="username"
+                (blur)="checkUsernameAvailability()"
+            />
+        </div>
+
+        <div>
+            <label for="password">Password</label>
+            @if (form.get('password')?.touched) {
+                @if (form.get('password')?.hasError('required')) {
+                    <app-error [errorMessage]="errorMessages.password.required" />
+                } @else if (form.get('password')?.hasError('pattern')) {
+                    <app-error [errorMessage]="errorMessages.password.invalid"/>
+                }
+            }
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter your password"
+                formControlName="password"
+            />
+        </div>
+
+        <div>
+            <label for="confirmPassword">Password</label>
+            @if (form.get('confirmPassword')?.touched && form.hasError('passwordMissmatch')) {
+                <app-error [errorMessage]="errorMessages.general.passwordMismatch"/>
+            }
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                formControlName="confirmPassword"
+            />
+        </div>
+
+        <button type="submit" >Sign Up</button>
+        <a routerLink="/login"><p> Back to Login</p></a>
+    </form>
+</div>

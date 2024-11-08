@@ -1,0 +1,18 @@
+<div>
+<!--    <router-outlet/>-->
+    <section class="task-controls">
+        <button (click)="showActiveTasks()">Active Tasks</button>
+        <button (click)="showCompletedTasks()">Completed Tasks</button>
+    </section>
+
+    <section id="tasks">
+        <h2>{{ currentTaskType() }} Tasks</h2>
+        <ul>
+            @for (task of tasksToShow; track task.uuid) {
+                <li>
+                    <app-task [task]="task" (completed)="onCompletedTask($event)"></app-task>
+                </li>
+            }
+        </ul>
+    </section>
+</div>

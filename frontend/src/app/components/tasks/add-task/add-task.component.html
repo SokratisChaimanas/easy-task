@@ -1,0 +1,55 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+    <h2>Add Task</h2>
+    <form [formGroup]="form">
+        <p>
+            <label for="title">Title</label>
+            @if (form.get('title')?.touched) {
+                @if (form.get('title')?.hasError('required')) {
+                    <app-error [errorMessage]="errorMessages.title.required"/>
+                } @else if (form.get('title')?.hasError('minlength') || form.get('title')?.hasError('maxlength')) {
+                    <app-error [errorMessage]="errorMessages.title.invalid"/>
+                }
+            }
+            <input
+                type="text"
+                id="title"
+                formControlName="title"
+            />
+        </p>
+
+        <p>
+            <label for="description">Summary</label>
+            @if (form.get('description')?.touched) {
+                @if (form.get('description')?.hasError('required')) {
+                    <app-error [errorMessage]="errorMessages.description.required"/>
+                }
+            }
+            <textarea
+                id="description"
+                rows="5"
+                formControlName="description"
+            ></textarea>
+        </p>
+
+        <p>
+            <label for="dueDate">Due Date</label>
+            @if (form.get('dueDate')?.touched) {
+                @if (form.get('dueDate')?.hasError('required')) {
+                    <app-error [errorMessage]="errorMessages.dueDate.required"/>
+                } @else if (form.get('dueDate')?.hasError('dateError')) {
+                    <app-error [errorMessage]="errorMessages.dueDate.invalid"/>
+                }
+            }
+            <input type="date"
+                   id="dueDate"
+                   formControlName="dueDate"
+            />
+        </p>
+
+        <p class="actions">
+            <button (click)="onCancel()" type="button">Cancel</button>
+            <button type="submit" (click)="onSubmit()">Create</button>
+        </p>
+    </form>
+</dialog>
